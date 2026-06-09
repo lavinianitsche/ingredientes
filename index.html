@@ -15,7 +15,7 @@
         <div class="section">
 
             <div class="buscar">
-                <label id="ingrediente">nome do ingrediente:</label>
+                <label for="buscarIngrediente">nome do ingrediente:</label>
                 <input type="text" id="buscarIngrediente" placeholder="digite o nome do ingrediente">
                 <button type="button" onclick="verificarIngrediente()">verificar</button>
             </div>
@@ -23,13 +23,13 @@
             <div id="mensagemBusca"></div>
 
             <div class="crud">
-                <label id="nome">nome do ingrediente:</label>
-                <input type="text">
-                <label id="indice">índice:</label>
-                <input type="text">
-                <button type="button" onclick="cadastrar">cadastrar</button>
-                <button type="button" onclick="alterar">alterar</button>
-                <button type="button" onclick="deletar">deletar</button>
+                <label for="nomeIngrediente">nome do ingrediente:</label>
+                <input type="text" id="nomeIngrediente" placeholder="digite o nome do ingrediente">
+                <label for="indiceIngrediente">índice:</label>
+                <input type="text" id="indiceIngrediente" placeholder="digite o índice do ingrediente">
+                <button type="button" onclick="cadastrar()">cadastrar</button>
+                <button type="button" onclick="alterar()">alterar</button>
+                <button type="button" onclick="deletar()">deletar</button>
             </div>
             
             <div id="mensagemCrud"></div>
@@ -46,37 +46,6 @@
 
     <!-- não foi finalizado!!!! -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- <form action="">
-
-        <div class="cadastro">
-            <div class="lista">
-                <h1><strong>Cadastro de Ingredientes</strong></h1>
-                
-                <label for="">nome do ingrediente:</label> <br>
-                <input type="text" id="nome"> <br><br>
-                
-                <label for="">quantidade: </label> <br>
-                <input type="text" id="qtd"> <br><br>
-                
-                <button type="button" onclick="calcular()">calcular media</button> <br><br>
-            </div>
-        </div>
-
-    </form> -->
 </body>
 
 <script src="js/script.js"></script>
