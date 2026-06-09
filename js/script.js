@@ -1,6 +1,6 @@
-function verificarIngrediente() {
+// function verificarIngrediente() {
 
-}
+// }
 
 // esperar liberação do norberto
 // array - ingredientesDisponiveis
