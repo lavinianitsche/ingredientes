@@ -4,6 +4,7 @@
 
 let ingredientes = [];
 
+// necessito achar outra forma de fazer a function atualizarLista() sem IA, norberto me socorre 😭😭😭😭
 function atualizarLista() {
     const listaDiv = document.getElementById('listaIngredientes');
     listaDiv.innerHTML = "";
@@ -22,6 +23,9 @@ function atualizarLista() {
         listaDiv.appendChild(itemDiv);
     });
 }
+
+
+
 
 function cadastrar() {
 
