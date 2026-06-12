@@ -23,14 +23,6 @@ function cadastrar() {
 
         return;
     }
-
-    
-    // ingredientes[indice] = nome;
-    // console.log(`ingrediente: ${nome} cadastrado no índice ${indice} com sucesso`)
-    
-    
-    // ingredientes = document.getElementById('nomeIngrediente').value.trim();
-    // console.log(ingredientes);
     
 }
 
