@@ -71,3 +71,25 @@ function mensagem(tipo, mensagem, status) {
         elemento.style.borderLeftColor = '#4fc3f7';
     }, 4000);
 }
+
+function verificarIngrediente() {
+    const ingredientesDisponiveis = ingredientes;
+    const ingredienteProcurado = document.getElementById('buscarIngrediente');
+    let ingredienteBuscado = ingredienteProcurado.value.toLowerCase().trim();
+    ingredienteBuscado = ingredienteBuscado.replaceAll(" ", "");
+    
+    if (ingredienteProcurado === "") {
+        mensagem('busca', 'erro: digite o nome do ingrediente para verificar', 'error');
+        
+        return;
+    }
+    
+}
+
+// function deletarLista(indice) {
+//     if (indice >= 0 && indice < ingredientes.length) {
+//         ingredientes.splice(indice, 1);
+//         atualizarLista();
+//         mensagem('crud', `Ingrediente removido com sucesso!`, 'success');
+//     }
+// }
