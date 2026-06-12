@@ -107,20 +107,20 @@ function cadastrar() {
         return;
     }
     
-    // Se o índice foi fornecido
-    if (indiceIngrediente !== '') {
-        const indice = parseInt(indiceIngrediente);
-        if (isNaN(indice) || indice < 0 || indice > ingredientes.length) {
-            mostrarMensagem('crud', 'Índice inválido! Use um número entre 0 e ' + ingredientes.length, 'error');
-            return;
-        }
-        ingredientes.splice(indice, 0, nomeIngrediente);
-        mostrarMensagem('crud', `✅ Ingrediente "${nomeIngrediente}" cadastrado no índice ${indice}!`, 'success');
-    } else {
-        // Adicionar no final
-        ingredientes.push(nomeIngrediente);
-        mostrarMensagem('crud', `✅ Ingrediente "${nomeIngrediente}" cadastrado com sucesso!`, 'success');
-    }
+    // // Se o índice foi fornecido
+    // if (indiceIngrediente !== '') {
+    //     const indice = parseInt(indiceIngrediente);
+    //     if (isNaN(indice) || indice < 0 || indice > ingredientes.length) {
+    //         mostrarMensagem('crud', 'Índice inválido! Use um número entre 0 e ' + ingredientes.length, 'error');
+    //         return;
+    //     }
+    //     ingredientes.splice(indice, 0, nomeIngrediente);
+    //     mostrarMensagem('crud', `✅ Ingrediente "${nomeIngrediente}" cadastrado no índice ${indice}!`, 'success');
+    // } else {
+    //     // Adicionar no final
+    //     ingredientes.push(nomeIngrediente);
+    //     mostrarMensagem('crud', `✅ Ingrediente "${nomeIngrediente}" cadastrado com sucesso!`, 'success');
+    // }
     
     nomeInput.value = '';
     indiceInput.value = '';

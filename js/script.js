@@ -13,11 +13,11 @@ function atualizarLista() {
         return;
     }
     
-    ingredientes.forEach((ingrediente, index) => {
+    ingredientes.forEach((ingrediente, indice) => {
         const itemDiv = document.createElement('div');
         itemDiv.innerHTML = `
-            <span>${index}. ${ingrediente}</span>
-            <button onclick="deletarPorIndice(${index})" style="background: #ff6b6b; padding: 5px 10px; font-size: 0.8rem;">x</button>
+            <span>${indice}. ${ingrediente}</span>
+            <button onclick="deletarPorIndice(${indice})" style="background: #ff6b6b; padding: 5px 10px; font-size: 0.8rem;">x</button>
         `;
         listaDiv.appendChild(itemDiv);
     });
@@ -26,7 +26,7 @@ function atualizarLista() {
 function cadastrar() {
 
     const nome = document.getElementById('nomeIngrediente');
-    let name = nome.value.trim();
+    let name = nome.value.toLowerCase().trim();
     
     if (name === "" || name.length < 3) {
         mensagem('crud', name === "" ? "erro: nome não pode estar vazio" : "erro: nome deve ter no mínimo 3 letras", 'error');
@@ -35,11 +35,15 @@ function cadastrar() {
         
         return;
         
+    } else if (ingredientes.includes(name)) {
+        mensagem('crud', `erro: o ingrediente "${name}" já foi cadastrado`, 'error');
+        nome.focus();
+        return;
     } else {
         ingredientes.push(name);
         let indice = ingredientes.length - 1;
         mensagem('crud', `ingrediente ${name} cadastrado com sucesso no índice ${indice}`, 'success')
-        console.log(`Nome: ${name}, Índice: ${indice}`);
+        console.log(`nome: ${name}, índice: ${indice}`);
         nome.value = "";
         atualizarLista();
 
