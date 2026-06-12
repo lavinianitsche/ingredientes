@@ -27,6 +27,7 @@ function cadastrar() {
 
     const nome = document.getElementById('nomeIngrediente');
     let name = nome.value.toLowerCase().trim();
+    name = name.replaceAll(" ", "");
     
     if (name === "" || name.length < 3) {
         mensagem('crud', name === "" ? "erro: nome não pode estar vazio" : "erro: nome deve ter no mínimo 3 letras", 'error');
