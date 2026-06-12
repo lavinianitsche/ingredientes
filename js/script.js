@@ -4,6 +4,25 @@
 
 let ingredientes = [];
 
+function atualizarLista() {
+    const listaDiv = document.getElementById('listaIngredientes');
+    listaDiv.innerHTML = "";
+    
+    if (ingredientes.length === 0) {
+        listaDiv.innerHTML = '<div style="text-align: center; color: #999;">Nenhum ingrediente cadastrado</div>';
+        return;
+    }
+    
+    ingredientes.forEach((ingrediente, index) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.innerHTML = `
+            <span>${index}. ${ingrediente}</span>
+            <button onclick="deletarPorIndice(${index})" style="background: #ff6b6b; padding: 5px 10px; font-size: 0.8rem;">x</button>
+        `;
+        listaDiv.appendChild(itemDiv);
+    });
+}
+
 function cadastrar() {
 
     const nome = document.getElementById('nomeIngrediente');
@@ -17,9 +36,12 @@ function cadastrar() {
         return;
         
     } else {
-        mensagem('crud', `ingrediente ${name} cadastrado com sucesso`, 'success')
-        console.log(name);
+        ingredientes.push(name);
+        let indice = ingredientes.length - 1;
+        mensagem('crud', `ingrediente ${name} cadastrado com sucesso no índice ${indice}`, 'success')
+        console.log(`Nome: ${name}, Índice: ${indice}`);
         nome.value = "";
+        atualizarLista();
 
         return;
     }
