@@ -102,10 +102,10 @@ function verificarIngrediente() {
     document.getElementById('buscarIngrediente').value = '';
 }
 
-// function deletarLista(indice) {
-//     if (indice >= 0 && indice < ingredientes.length) {
-//         ingredientes.splice(indice, 1);
-//         atualizarLista();
-//         mensagem('crud', `Ingrediente removido com sucesso!`, 'success');
-//     }
-// }
+function deletarLista(indice) {
+    if (indice >= 0 && indice < ingredientes.length) {
+        ingredientes.splice(indice, 1);
+        atualizarLista();
+        mensagem('crud', `Ingrediente removido com sucesso!`, 'success');
+    }
+}
