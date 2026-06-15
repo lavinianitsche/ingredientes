@@ -78,12 +78,28 @@ function verificarIngrediente() {
     let ingredienteBuscado = ingredienteProcurado.value.toLowerCase().trim();
     ingredienteBuscado = ingredienteBuscado.replaceAll(" ", "");
     
-    if (ingredienteProcurado === "") {
+    if (ingredienteBuscado === '') {
         mensagem('busca', 'erro: digite o nome do ingrediente para verificar', 'error');
-        
         return;
     }
     
+    let indiceEncontrado = -1;
+    for (let i = 0; i < ingredientesDisponiveis.length; i++) {
+        if (ingredientesDisponiveis[i] === ingredienteBuscado) {
+            indiceEncontrado = i;
+            break;
+        }
+    }
+
+    if (indiceEncontrado !== -1) {
+        mensagem('busca', `ingrediente encontrado na posição ${indiceEncontrado}`, 'success');
+    } else {
+        ingredientesDisponiveis.push(ingredienteBuscado);
+        atualizarLista();
+        mensagem('busca', 'ingrediente não encontrado, adicionado à lista', 'success');
+    }
+    
+    document.getElementById('buscarIngrediente').value = '';
 }
 
 // function deletarLista(indice) {
