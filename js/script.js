@@ -4,7 +4,6 @@
 
 let ingredientes = [];
 
-// necessito achar outra forma de fazer a function atualizarLista() sem IA, norberto me socorre 😭😭😭😭
 function atualizarLista() {
     const listaDiv = document.getElementById('listaIngredientes');
     listaDiv.innerHTML = "";
@@ -16,23 +15,20 @@ function atualizarLista() {
     
     ingredientes.forEach((ingrediente, indice) => {
         const itemDiv = document.createElement('div');
-        itemDiv.innerHTML = `
-            <span>${indice}. ${ingrediente}</span>
-            <button onclick="deletarPorIndice(${indice})" style="background: #ff6b6b; padding: 5px 10px; font-size: 0.8rem;">x</button>
-        `;
+        itemDiv.innerHTML = `<span>${indice}. ${ingrediente}</span>`;
         listaDiv.appendChild(itemDiv);
     });
 }
 
-
-
-
 function cadastrar() {
-
     const nome = document.getElementById('nomeIngrediente');
     let name = nome.value.toLowerCase().trim();
-    name = name.replaceAll(" ", "");
+    // name = name.replaceAll(" ", "");
     
+    const ingredientesData = {
+        nome: name
+    };
+
     if (name === "" || name.length < 3) {
         mensagem('crud', name === "" ? "erro: nome não pode estar vazio" : "erro: nome deve ter no mínimo 3 letras", 'error');
         nome.focus();
@@ -102,10 +98,38 @@ function verificarIngrediente() {
     document.getElementById('buscarIngrediente').value = '';
 }
 
-function deletarLista(indice) {
-    if (indice >= 0 && indice < ingredientes.length) {
-        ingredientes.splice(indice, 1);
-        atualizarLista();
-        mensagem('crud', `Ingrediente removido com sucesso!`, 'success');
+function deletar(indice){
+    const name = document.getElementById('nomeIngrediente');
+    let nome = name.value.toLowerCase().trim();
+    // nome = nome.replaceAll(" ", "");
+
+    ingredientes.splice(indice, 1)
+
+    atualizarLista();
+    mensagem('crud', `ingrediente removido com sucesso!`, 'success');
+}
+
+function alterar(){
+    const nomeInput = document.getElementById('novoNome');
+    const indiceInput = document.getElementById('indiceNovo');
+    const novoNome = nomeInput.value.trim();
+    const novoIndice = parseInt(indiceInput.value.trim());
+
+    if (novoNome === '') {
+        mostrarMensagem('crud', 'por favor, digite o novo nome do ingrediente', 'error');
+        return;
     }
+    
+    if (isNaN(novoIndice) || indiceInput.value.trim() === '') {
+        mostrarMensagem('crud', 'por favor, digite o índice do ingrediente para alterar', 'error');
+        return;
+    }
+
+    
+    
+    nomeInput.value = '';
+    indiceInput.value = '';
+    atualizarLista();
+    mensagem('crud', `ingrediente alterado com sucesso!`, 'success');
+    // console.log("aasdahsdkashk");
 }
