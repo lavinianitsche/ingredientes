@@ -1,6 +1,8 @@
 // esperar liberação do norberto
 // array - ingredientesDisponiveis
-// string ingrediteProcurado
+// string - ingrediteProcurado
+
+//  LEMBRA DO AUDIO DE 8 MINUTOS E ESCUTA, ARRUMA ESSA JOÇA AI
 
 let ingredientes = [];
 
@@ -26,7 +28,8 @@ function cadastrar() {
     // name = name.replaceAll(" ", "");
     
     const ingredientesData = {
-        nome: name
+        nome: valor_input_nome,
+        id: id = indice + 1
     };
 
     if (name === "" || name.length < 3) {
@@ -116,20 +119,20 @@ function alterar(){
     const novoIndice = parseInt(indiceInput.value.trim());
 
     if (novoNome === '') {
-        mostrarMensagem('crud', 'por favor, digite o novo nome do ingrediente', 'error');
+        mensagem('crud', 'por favor, digite o novo nome do ingrediente', 'error');
         return;
     }
     
     if (isNaN(novoIndice) || indiceInput.value.trim() === '') {
-        mostrarMensagem('crud', 'por favor, digite o índice do ingrediente para alterar', 'error');
+        mensagem('crud', 'por favor, digite o índice do ingrediente para alterar', 'error');
         return;
     }
 
-    
-    
+    ingredientes.splice(novoIndice, 1, novoNome);
+    console.log(`novo nome: ${novoNome}, índice: ${novoIndice}`);
+
     nomeInput.value = '';
     indiceInput.value = '';
     atualizarLista();
     mensagem('crud', `ingrediente alterado com sucesso!`, 'success');
-    // console.log("aasdahsdkashk");
 }
