@@ -2,8 +2,6 @@
 // array - ingredientesDisponiveis
 // string - ingrediteProcurado
 
-//  LEMBRA DO AUDIO DE 8 MINUTOS E ESCUTA, ARRUMA ESSA JOÇA AI
-
 let ingredientes = [];
 
 function atualizarLista() {
@@ -25,7 +23,6 @@ function atualizarLista() {
 function cadastrar() {
     const nome = document.getElementById('nomeIngrediente');
     let name = nome.value.toLowerCase().trim();
-    // name = name.replaceAll(" ", "");
     
     const ingredientesData = {
         nome: valor_input_nome,
@@ -101,23 +98,12 @@ function verificarIngrediente() {
     document.getElementById('buscarIngrediente').value = '';
 }
 
-function deletar(indice){
-    const name = document.getElementById('nomeIngrediente');
-    let nome = name.value.toLowerCase().trim();
-    // nome = nome.replaceAll(" ", "");
-
-    ingredientes.splice(indice, 1)
-
-    atualizarLista();
-    mensagem('crud', `ingrediente removido com sucesso!`, 'success');
-}
-
 function alterar(){
     const nomeInput = document.getElementById('novoNome');
     const indiceInput = document.getElementById('indiceNovo');
     const novoNome = nomeInput.value.trim();
     const novoIndice = parseInt(indiceInput.value.trim());
-
+    
     if (novoNome === '') {
         mensagem('crud', 'por favor, digite o novo nome do ingrediente', 'error');
         return;
@@ -135,4 +121,14 @@ function alterar(){
     indiceInput.value = '';
     atualizarLista();
     mensagem('crud', `ingrediente alterado com sucesso!`, 'success');
+}
+
+function deletar(indice){
+    const nome = document.getElementById('nomeIngrediente');
+    let name = nome.value.toLowerCase().trim();
+
+    ingredientes.splice(indice, 1)
+
+    atualizarLista();
+    mensagem('crud', `ingrediente removido com sucesso!`, 'success');
 }
