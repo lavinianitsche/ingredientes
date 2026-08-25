@@ -1,6 +1,6 @@
 // esperar liberação do norberto
 // array - ingredientesDisponiveis
-// string - ingrediteProcurado
+// string ingrediteProcurado
 
 let ingredientes = [];
 
@@ -25,8 +25,7 @@ function cadastrar() {
     let name = nome.value.toLowerCase().trim();
     
     const ingredientesData = {
-        nome: valor_input_nome,
-        id: id = indice + 1
+        nome: name
     };
 
     if (name === "" || name.length < 3) {
@@ -98,37 +97,53 @@ function verificarIngrediente() {
     document.getElementById('buscarIngrediente').value = '';
 }
 
+function deletar() {
+
+    const nameInput = document.getElementById('nomeIngrediente');
+    
+    let nomeDeletar = nameInput.value.toLowerCase().trim();
+
+    if (nomeDeletar === "") {
+        mensagem('crud', "erro: digite o nome do ingrediente que deseja deletar", 'error');
+        nameInput.focus();
+        return;
+    }
+
+    let indiceEncontrado = ingredientes.indexOf(nomeDeletar);
+
+    if (indiceEncontrado === -1) {
+        mensagem('crud', `erro: o ingrediente "${nomeDeletar}" não foi encontrado`, 'error');
+        nameInput.focus();
+        return;
+    }
+
+    ingredientes.splice(indiceEncontrado, 1);
+
+    nameInput.value = "";
+    atualizarLista();
+    mensagem('crud', `ingrediente "${nomeDeletar}" deletado com sucesso!`, 'success');
+}
+
 function alterar(){
     const nomeInput = document.getElementById('novoNome');
     const indiceInput = document.getElementById('indiceNovo');
     const novoNome = nomeInput.value.trim();
     const novoIndice = parseInt(indiceInput.value.trim());
-    
+
     if (novoNome === '') {
-        mensagem('crud', 'por favor, digite o novo nome do ingrediente', 'error');
+        mostrarMensagem('crud', 'por favor, digite o novo nome do ingrediente', 'error');
         return;
     }
     
-    if (isNaN(novoIndice) || indiceInput.value.trim() === '') {
-        mensagem('crud', 'por favor, digite o índice do ingrediente para alterar', 'error');
+    if (isNaN(novoIndice) || novoIndice < 0 || novoIndice >= ingredientes.length) {
+        mensagem('crud', 'erro: índice informado não existe na lista', 'error');
         return;
     }
 
-    ingredientes.splice(novoIndice, 1, novoNome);
-    console.log(`novo nome: ${novoNome}, índice: ${novoIndice}`);
+    ingredientes[novoIndice] = novoNome;
 
     nomeInput.value = '';
     indiceInput.value = '';
     atualizarLista();
     mensagem('crud', `ingrediente alterado com sucesso!`, 'success');
-}
-
-function deletar(indice){
-    const nome = document.getElementById('nomeIngrediente');
-    let name = nome.value.toLowerCase().trim();
-
-    ingredientes.splice(indice, 1)
-
-    atualizarLista();
-    mensagem('crud', `ingrediente removido com sucesso!`, 'success');
 }
